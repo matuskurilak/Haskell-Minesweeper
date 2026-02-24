@@ -43,15 +43,20 @@ The very first move is always placed at the center of the board, maximising the 
 
 ## Project Structure
 
-```
-├── Board.hs           — Core board types, state, and game logic (provided)
-├── UI.hs              — Terminal rendering and input handling (provided)
-├── Main.hs            — Entry point and benchmark runner (provided)
-├── HumanSolver.hs     — Human player input handling
-├── ComputerSolver.hs  — AI solver (independently implemented)
-└── tuke-minesweeper.cabal
-```
 
+```
+├── Minesweeper/
+│   ├── Board.hs           — Core board types, state, and game logic (provided)
+│   ├── UI.hs              — Terminal rendering and input handling (provided)
+│   ├── HumanSolver.hs     — Human player input handling
+│   └── ComputerSolver.hs  — AI solver (independently implemented)
+├── Main.hs                — Entry point and benchmark runner
+├── tuke-minesweeper.cabal
+├── Makefile
+├── LICENSE
+├── README.md (this file)
+└── .gitignore
+```
 ---
 
 ## Getting Started
@@ -70,16 +75,24 @@ cabal build
 
 ### Play
 
+Board size is optional and defaults to `small`. Available sizes: `small`, `medium`, `large`.
+
 ```bash
-cabal run minesweeper
+cabal run minesweeper                  # small board (default)
+cabal run minesweeper small
+cabal run minesweeper medium
+cabal run minesweeper large
 ```
 
 ### Run the AI Benchmark
 
-Runs N random games and reports the solver's win rate:
+Runs N random games and reports the solver's win rate. Board size and number of runs are both optional.
 
 ```bash
-cabal run minesweeper benchmark 100
+cabal run minesweeper benchmark        # small board, 100 runs
+cabal run minesweeper benchmark 50     # small board, 50 runs
+cabal run minesweeper medium benchmark 200
+cabal run minesweeper large benchmark 30
 ```
 
 ---
